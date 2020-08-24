@@ -1,0 +1,19 @@
+# CLion
+.idea
+cmake-build-debug
+CMakeLists.txt
+
+# object files, dependencies, libraries, binaries
+obj
+*.o
+*.d
+*.a
+*.so
+*.out
+
+# valgrind
+*.dSYM
+*.out.*
+
+# macOS
+.DS_Store
