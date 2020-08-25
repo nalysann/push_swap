@@ -4,6 +4,8 @@ obj/
 *.d
 *.a
 *.out
+push_swap
+checker
 
 # CLion
 .idea/
