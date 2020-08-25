@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   pf_handle_length.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:16:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:16:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:30:17 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:30:18 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
+#ifndef PF_HANDLE_LENGTH_H
+# define PF_HANDLE_LENGTH_H
 
-#include <unistd.h>
+# include <stdarg.h>
 
-void	ft_putstr(const char *s)
-{
-	ft_putstr_fd(s, STDOUT_FILENO);
-}
+long long			get_signed(va_list ap, int length);
+unsigned long long	get_unsigned(va_list ap, int length);
+long double			get_float(va_list ap, int length);
+
+#endif

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_ctype.h"
-#include "ft_strtoll.h"
+#include "hd_strtoll.h"
 
 #include <errno.h>
 #include <limits.h>

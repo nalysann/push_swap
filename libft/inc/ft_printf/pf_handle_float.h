@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   pf_handle_float.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:16:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:16:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:30:06 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:30:07 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
+#ifndef PF_HANDLE_FLOAT_H
+# define PF_HANDLE_FLOAT_H
 
-#include <unistd.h>
+# include "pf_handle_placeholder.h"
 
-void	ft_putstr(const char *s)
+# include <stdarg.h>
+
+# define EXPONENT_SHIFT		16383
+
+typedef union				u_extended
 {
-	ft_putstr_fd(s, STDOUT_FILENO);
-}
+	long double				value;
+	struct
+	{
+		unsigned long long	mantissa : 64;
+		unsigned			exponent : 15;
+		unsigned			sign : 1;
+	}						s_;
+}							t_extended;
+
+char						*handle_float(t_fields *fields, va_list ap);
+
+#endif

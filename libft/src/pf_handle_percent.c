@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   pf_handle_percent.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:16:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:16:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:43:22 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:43:23 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
+#include "ft_stdlib.h"
+#include "ft_string.h"
+#include "pf_handle_placeholder.h"
 
-#include <unistd.h>
+#include <stdarg.h>
+#include <stddef.h>
 
-void	ft_putstr(const char *s)
+char	*handle_percent(t_fields *fields, va_list ap)
 {
-	ft_putstr_fd(s, STDOUT_FILENO);
+	char	*result;
+
+	if (!(result = ft_strnew(1)))
+		return (NULL);
+	result[0] = '%';
+	(void)fields;
+	(void)ap;
+	return (result);
 }

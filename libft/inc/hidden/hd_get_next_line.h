@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   hd_get_next_line.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:16:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:16:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/07/13 18:29:30 by nalysann          #+#    #+#             */
+/*   Updated: 2020/07/13 18:29:32 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
+#ifndef HD_GET_NEXT_LINE_H
+# define HD_GET_NEXT_LINE_H
 
-#include <unistd.h>
+# ifndef BUF_SIZE
+#  define BUF_SIZE	4096
+# endif
 
-void	ft_putstr(const char *s)
-{
-	ft_putstr_fd(s, STDOUT_FILENO);
-}
+# ifndef FD_MAX
+#  define FD_MAX	1024
+# endif
+
+#endif

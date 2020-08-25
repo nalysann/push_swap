@@ -12,7 +12,7 @@
 
 #include "ft_stdlib.h"
 #include "ft_string.h"
-#include "get_next_line.h"
+#include "hd_get_next_line.h"
 
 #include <stddef.h>
 #include <unistd.h>

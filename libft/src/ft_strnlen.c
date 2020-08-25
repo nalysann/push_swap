@@ -23,15 +23,15 @@ static int	count_with_longwords(const char *s, const char *char_ptr,
 	while (long_ptr < (unsigned long *)end_ptr)
 	{
 		longword = *long_ptr++;
-		if (((longword - 0x0101010101010101) & 0x8080808080808080))
+		if (((longword - 0x0101010101010101) & 0x8080808080808080) != 0)
 		{
 			char_ptr = (const char *)(long_ptr - 1);
 			i = -1;
 			while (++i < sizeof(unsigned long))
 				if (char_ptr[i] == '\0')
 					break ;
-			if (i < 8 && (char_ptr += i))
-				break;
+			if (i < sizeof(unsigned long) && (char_ptr += i))
+				break ;
 		}
 		char_ptr = end_ptr;
 	}

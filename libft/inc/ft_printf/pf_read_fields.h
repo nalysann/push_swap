@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   pf_read_fields.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:16:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:16:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:30:41 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:30:42 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
+#ifndef PF_READ_FIELDS_H
+# define PF_READ_FIELDS_H
 
-#include <unistd.h>
+# include "pf_handle_placeholder.h"
 
-void	ft_putstr(const char *s)
-{
-	ft_putstr_fd(s, STDOUT_FILENO);
-}
+void	read_flags(const char **format, t_fields *fields);
+void	read_width(const char **format, t_fields *fields);
+void	read_precision(const char **format, t_fields *fields);
+void	read_length(const char **format, t_fields *fields);
+void	read_type(const char **format, t_fields *fields);
+
+#endif
