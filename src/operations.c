@@ -12,34 +12,44 @@
 
 #include "stack.h"
 
-void	swap(t_stack *stack)
+#include <stddef.h>
+
+void	swap(t_stack *a, t_stack *b)
 {
 	int		tmp;
 
-	if (stack->size < 2)
-		return ;
-	tmp = stack->front->value;
-	stack->front->value = stack->front->prev->value;
-	stack->front->prev->value = tmp;
+	if (a != NULL && a->size > 1)
+	{
+		tmp = a->front->value;
+		a->front->value = a->front->next->value;
+		a->front->next->value = tmp;
+	}
+	if (b != NULL && b->size > 1)
+	{
+		tmp = b->front->value;
+		b->front->value = b->front->next->value;
+		b->front->next->value = tmp;
+	}
 }
 
-void	push(t_stack *first, t_stack *second)
+void	push(t_stack *a, t_stack *b)
 {
-	if (second->size == 0)
-		return ;
-	push_front(first, pop_front(second));
+	if (b->size > 0)
+		push_front(a, pop_front(b));
 }
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *a, t_stack *b)
 {
-	if (stack->size < 2)
-		return ;
-	push_back(stack, pop_front(stack));
+	if (a != NULL && a->size > 1)
+		push_back(a, pop_front(a));
+	if (b != NULL && b->size > 1)
+		push_back(b, pop_front(b));
 }
 
-void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *a, t_stack *b)
 {
-	if (stack->size < 2)
-		return ;
-	push_front(stack, pop_back(stack));
+	if (a != NULL && a->size > 1)
+		push_front(a, pop_back(a));
+	if (b != NULL && b->size > 1)
+		push_front(b, pop_back(b));
 }

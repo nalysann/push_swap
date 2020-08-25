@@ -18,9 +18,14 @@ SRC_DIR = src
 
 SRC_CHECKER = checker.c \
               operations.c \
-              stack.c
+              stack_operations.c \
+              stack_utils.c \
+              validation.c
 
-SRC_PUSH_SWAP = push_swap.c
+SRC_PUSH_SWAP = push_swap.c \
+                operations.c \
+                stack_operations.c \
+                validation.c
 
 INC_DIR = inc \
           $(LIB_DIR)/inc
@@ -42,15 +47,19 @@ LIB = libft.a
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror \
-         $(addprefix -I, $(INC_DIR)) \
+         $(addprefix -I , $(INC_DIR)) \
          -MMD \
          -march=native -O2 -pipe
 
 LDFLAGS = -L $(LIB_DIR) -lft
 
+SHELL = /bin/zsh
+
 WHITE = "\033[0;0m"
 RED = "\033[1;31m"
-BLUE = "\033[1;34m"
+GREEN = "\033[1;32m"
+YELLOW = "\033[1;33m"
+BACK = "\033[A\033[M"
 
 .PHONY: all clean fclean re
 
@@ -60,29 +69,35 @@ all:
 	@$(MAKE) $(PUSH_SWAP)
 
 $(LIB_DIR)/$(LIB):
-	$(MAKE) -sc $(LIB_DIR)
+	@make -sC $(LIB_DIR)
 
-$(CHECKER): $(OBJ_CHECKER) $(LIB_DIR)/$(LIB)
+$(CHECKER): $(LIB_DIR)/$(LIB) $(OBJ_CHECKER)
 	@$(CC) $(LDFLAGS) $(OBJ_CHECKER) -o $@
+	@echo -e $(BACK)$(GREEN)$@ created$(WHITE)
 
-$(PUSH_SWAP): $(OBJ_PUSH_SWAP) $(LIB_DIR)/$(LIB)
+$(PUSH_SWAP): $(LIB_DIR)/$(LIB) $(OBJ_PUSH_SWAP)
 	@$(CC) $(LDFLAGS) $(OBJ_PUSH_SWAP) -o $@
+	@echo -e $(BACK)$(GREEN)$@ created$(WHITE)
 
 $(OBJ_DIR):
 	@mkdir -p $@
+	@echo
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo -e $(YELLOW)compiling: $(@:$(OBJ_DIR)/%=%)$(BACK)$(WHITE)
 
 include $(wildcard $(DEP_CHECKER))
 include $(wildcard $(DEP_PUSH_SWAP))
 
 clean:
-	@$(MAKE) clean -sC $(LIB_DIR)
+	@make clean -sC $(LIB_DIR)
 	@rm -rf $(OBJ_DIR)
+	@echo -e $(RED)object and dependency files deleted$(WHITE)
 
 fclean: clean
-	@$(MAKE) fclean -sC $(LIB_DIR)
+	@make fclean -sC $(LIB_DIR)
 	@rm -f $(CHECKER) $(PUSH_SWAP)
+	@echo -e $(RED)$(CHECKER) and $(PUSH_SWAP) deleted$(WHITE)
 
 re: fclean all

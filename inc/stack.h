@@ -13,6 +13,7 @@
 #ifndef STACK_H
 # define STACK_H
 
+# include <stdbool.h>
 # include <stddef.h>
 
 typedef struct	s_node
@@ -33,5 +34,8 @@ void			push_back(t_stack *stack, t_node *node);
 void			push_front(t_stack *stack, t_node *node);
 t_node			*pop_back(t_stack *stack);
 t_node			*pop_front(t_stack *stack);
+
+void			print_stacks(t_stack *a, t_stack *b);
+bool			is_sorted(t_stack *stack);
 
 #endif

@@ -183,7 +183,7 @@ include $(wildcard $(DEP))
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo -e $(RED)object and dependency files deleted$(WHITE)
+# 	@echo -e $(RED)object and dependency files deleted$(WHITE)
 
 fclean: clean
 	@rm -f $(LIB)

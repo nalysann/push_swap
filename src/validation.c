@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_stdlib.h"
+#include "ft_string.h"
 
 #include <limits.h>
 #include <stdbool.h>
