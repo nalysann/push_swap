@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_throw.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:30:40 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:30:43 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 09:33:59 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 09:34:00 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft_error.h"
+#include "ft_io.h"
 
-# include "ft_ctype.h"
-# include "ft_error.h"
-# include "ft_io.h"
-# include "ft_list.h"
-# include "ft_math.h"
-# include "ft_stdlib.h"
-# include "ft_string.h"
+#include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#endif
+void	ft_throw(const char *error_message, int error_code)
+{
+	if (error_message != NULL)
+	{
+		ft_putstr_fd(RED, STDERR_FILENO);
+		ft_putendl_fd(error_message, STDERR_FILENO);
+	}
+	exit(error_code);
+}

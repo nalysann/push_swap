@@ -10,9 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-
-SHRD = libft.so
+LIB = libft.a
 
 SRC_DIR = src
 
@@ -32,6 +30,7 @@ SRC = ft_digittoint.c \
       ft_isxdigit.c \
       ft_tolower.c \
       ft_toupper.c \
+      ft_throw.c \
       ft_putchar.c \
       ft_putchar_fd.c \
       ft_putendl.c \
@@ -122,36 +121,32 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 DEP = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.d))
 
-CC = clang
+CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror $(addprefix -I, $(INC_DIR))
-
-SOFLAGS = -fPIC -shared
-
-OFLAGS = -march=native -O2 -pipe # -funroll-loops -ftree-vectorize
+CFLAGS = -Wall -Wextra -Werror \
+         $(addprefix -I, $(INC_DIR)) \
+         -MMD \
+         -march=native -O2 -pipe
 
 WHITE = "\033[0;0m"
 RED = "\033[1;31m"
 BLUE = "\033[1;34m"
 
-.PHONY: all so clean fclean re
+.PHONY: all clean fclean re
 
-all: $(NAME)
+all:
+	@$(MAKE) $(LIB)
 
-$(NAME): $(OBJ)
+$(LIB): $(OBJ)
 	@ar rc $@ $?
-	@ranlib $(NAME)
-	@echo $(BLUE)$(NAME) successfully created$(NC)
+	@ranlib $(LIB)
+	@echo $(BLUE)$@ successfully created$(NC)
 
-so: $(SHRD)
+$(OBJ_DIR):
+	@mkdir -p $@
 
-$(SHRD): $(OBJ)
-	@$(CC) $(SOFLAGS) $? -o $@
-	@echo $(BLUE)$(SHRD) successfully created $(NC)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(OFLAGS) -c $< -o $@ -MMD
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 include $(wildcard $(DEP))
 
@@ -159,6 +154,6 @@ clean:
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -f $(NAME) $(SHRD)
+	@rm -f $(LIB)
 
 re: fclean all
