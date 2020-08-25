@@ -25,28 +25,25 @@ void	print_stacks(t_stack *a, t_stack *b)
 	a_node = a->front;
 	b_node = b->front;
 	size = (a->size > b->size ? a->size : b->size);
-	while (size > 0)
-	{
-		if (a->size <= size && b->size <= size)
+	while (size-- > 0)
+		if (a->size > size && b->size > size)
 		{
 			ft_printf("|%11d|    |%11d|\n", a_node->value, b_node->value);
-			a_node = a_node->prev;
-			b_node = b_node->prev;
+			a_node = a_node->next;
+			b_node = b_node->next;
 		}
-		else if (a->size <= size)
+		else if (a->size > size)
 		{
 			ft_printf("|%11d|    |%11s|\n", a_node->value, "");
-			a_node = a_node->prev;
+			a_node = a_node->next;
 		}
-		else if (b->size < size)
+		else if (b->size > size)
 		{
 			ft_printf("|%11s|    |%11d|\n", "", b_node->value);
-			b_node = b_node->prev;
+			b_node = b_node->next;
 		}
-		--size;
-	}
-	ft_printf("--------------------------\n");
-	ft_printf("---> a <---****---> b <---\n");
+
+	ft_printf("--->  a  <---****--->  b  <---\n");
 }
 
 bool	is_sorted(t_stack *stack)

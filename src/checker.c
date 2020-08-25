@@ -24,13 +24,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <stdio.h>
+
 void			initialize_stack(t_stack *stack, int beg, int end, char *argv[])
 {
 	int		i;
 	t_node	*node;
 
 	ft_bzero(stack, sizeof(*stack));
-	stack->size = end - beg;
 	i = beg;
 	while (i < end)
 	{
@@ -100,7 +101,7 @@ int				main(int argc, char *argv[])
 		verbose = true;
 	if (!is_valid_input(argc, argv, verbose))
 		ft_throw(ERROR_MSG, E_VALUE);
-	initialize_stack(&a, 1 + (verbose ? 1 : 0), argc, argv);
+	initialize_stack(&a, (verbose ? 2 : 1), argc, argv);
 	initialize_stack(&b, 0, 0, argv);
 	handle_operations(&a, &b, verbose);
 	if (is_sorted(&a) && b.size == 0)
