@@ -4,8 +4,8 @@ obj/
 *.d
 *.a
 *.out
-push_swap
 checker
+push_swap
 
 # CLion
 .idea/
