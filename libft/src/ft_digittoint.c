@@ -15,7 +15,11 @@
 int		ft_digittoint(int c)
 {
 	if (ft_isxdigit(c))
+	{
 		return (ft_isdigit(c) ? c - '0' : c - 'a');
+	}
 	else
+	{
 		return (0);
+	}
 }

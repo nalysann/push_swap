@@ -13,7 +13,6 @@
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
-# include <stdbool.h>
 # include <stddef.h>
 
 void	ft_bzero(void *s, size_t n);
@@ -31,7 +30,7 @@ void	ft_strclr(char *s);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strdup(const char *s);
-bool	ft_strequ(const char *s1, const char *s2);
+int		ft_strequ(const char *s1, const char *s2);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(const char *s1, const char *s2);
@@ -45,7 +44,7 @@ char	*ft_strncat(char *s1, const char *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strncpy(char *dst, const char *src, size_t n);
 char	*ft_strndup(const char *s, size_t n);
-bool	ft_strnequ(const char *s1, const char *s2, size_t n);
+int		ft_strnequ(const char *s1, const char *s2, size_t n);
 size_t	ft_strnlen(const char *s, size_t maxlen);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *s, int c);

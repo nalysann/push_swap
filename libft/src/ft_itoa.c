@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static size_t	numlen_sign(int n)
+static size_t	get_length(int n)
 {
 	size_t	len;
 
@@ -35,8 +35,9 @@ char			*ft_itoa(int n)
 	char	*str;
 
 	sign = (n < 0 ? 1 : 0);
-	len = numlen_sign(n);
-	if (!(str = malloc(len + 1)))
+	len = get_length(n);
+	str = malloc(len + 1);
+	if (str == NULL)
 		return (NULL);
 	str[len] = '\0';
 	while (len > sign)

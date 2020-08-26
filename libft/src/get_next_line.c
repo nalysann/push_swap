@@ -17,30 +17,30 @@
 #include <stddef.h>
 #include <unistd.h>
 
-static char	*process_buffer(char **buffer, char *endl)
+static char		*process_buffer(char **buffer, char *endl)
 {
 	char	*str;
 	char	*tmp;
 
-	str = (endl != NULL ? ft_strndup(*buffer, endl - *buffer) : *buffer);
-	tmp = (endl != NULL ? *buffer : NULL);
-	*buffer = (endl != NULL ? ft_strdup(endl + 1) : NULL);
+	str = (endl ? ft_strndup(*buffer, endl - *buffer) : *buffer);
+	tmp = (endl ? *buffer : NULL);
+	*buffer = (endl ? ft_strdup(endl + 1) : NULL);
 	ft_strdel(&tmp);
 	return (str);
 }
 
-int			get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
-	static char	*buffers[FD_MAX];
-	char		buf[BUF_SIZE + 1];
-	ssize_t		ret;
-	char		*endl;
-	char		*tmp;
+	static char		*buffers[FD_MAX];
+	char			buf[BUF_SIZE + 1];
+	ssize_t			ret;
+	char			*endl;
+	char			*tmp;
 
-	if (buffers[fd] == NULL)
+	if (!buffers[fd])
 		buffers[fd] = ft_strnew(0);
 	endl = ft_strchr(buffers[fd], '\n');
-	while (endl == NULL && (ret = read(fd, buf, BUF_SIZE)) > 0)
+	while (!endl && (ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
 		tmp = buffers[fd];
@@ -50,5 +50,5 @@ int			get_next_line(const int fd, char **line)
 			break ;
 	}
 	*line = process_buffer(&buffers[fd], endl);
-	return ((ret < 0 || ((ret == 0) && !buffers[fd])) ? ret : 1);
+	return ((ret < 0 || ((ret == 0) && !buffers[fd])) ? (int)ret : 1);
 }

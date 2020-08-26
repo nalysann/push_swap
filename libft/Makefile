@@ -6,7 +6,7 @@
 #    By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/14 12:17:04 by nalysann          #+#    #+#              #
-#    Updated: 2020/07/14 12:17:09 by nalysann         ###   ########.fr        #
+#    Updated: 2020/08/26 08:53:48 by nalysann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -183,7 +183,7 @@ include $(wildcard $(DEP))
 
 clean:
 	@rm -rf $(OBJ_DIR)
-# 	@echo -e $(RED)object and dependency files deleted$(WHITE)
+#	@echo -e $(RED)object and dependency files deleted$(WHITE)
 
 fclean: clean
 	@rm -f $(LIB)

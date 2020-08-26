@@ -42,7 +42,6 @@ void	print_stacks(t_stack *a, t_stack *b)
 			ft_printf("|%11s|    |%11d|\n", "", b_node->value);
 			b_node = b_node->next;
 		}
-
 	ft_printf("--->  a  <---****--->  b  <---\n");
 }
 
