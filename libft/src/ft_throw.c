@@ -22,7 +22,8 @@ void	ft_throw(const char *error_message, int error_code)
 	if (error_message != NULL)
 	{
 		ft_putstr_fd(RED, STDERR_FILENO);
-		ft_putendl_fd(error_message, STDERR_FILENO);
+		ft_putstr_fd(error_message, STDERR_FILENO);
+		ft_putendl_fd(WHITE, STDERR_FILENO);
 	}
 	exit(error_code);
 }

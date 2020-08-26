@@ -13,6 +13,10 @@
 #ifndef FT_ERROR_H
 # define FT_ERROR_H
 
+# ifndef WHITE
+#  define WHITE		"\033[0;0m"
+# endif
+
 # ifndef RED
 #  define RED	"\033[1;31m"
 # endif

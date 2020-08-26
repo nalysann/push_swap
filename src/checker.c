@@ -24,8 +24,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <stdio.h>
-
 void			initialize_stack(t_stack *stack, int beg, int end, char *argv[])
 {
 	int		i;
@@ -75,7 +73,6 @@ static void		handle_operations(t_stack *a, t_stack *b, bool verbose)
 {
 	char	*line;
 
-	line = NULL;
 	if (verbose)
 		print_stacks(a, b);
 	while (get_next_line(STDIN_FILENO, &line) > 0)

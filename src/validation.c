@@ -16,8 +16,6 @@
 #include <limits.h>
 #include <stdbool.h>
 
-#include <stdio.h>
-
 static bool		is_unique(int idx, char *argv[], bool verbose)
 {
 	int		i;
