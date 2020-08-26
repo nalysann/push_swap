@@ -15,9 +15,27 @@
 
 # include "stack.h"
 
-void	swap(t_stack *a, t_stack *b);
-void	push(t_stack *a, t_stack *b);
-void	rotate(t_stack *a, t_stack *b);
-void	reverse_rotate(t_stack *a, t_stack *b);
+# include <stdbool.h>
+
+typedef enum	e_op_code
+{
+	OP_NONE,
+	OP_SA,
+	OP_SB,
+	OP_SS,
+	OP_PA,
+	OP_PB,
+	OP_RA,
+	OP_RB,
+	OP_RR,
+	OP_RRA,
+	OP_RRB,
+	OP_RRR
+}				t_op_code;
+
+void	swap(t_stack *first, t_stack *second, bool silent_mode);
+void	push(t_stack *first, t_stack *second, bool silent_mode, char to);
+void	rotate(t_stack *first, t_stack *second, bool silent_mode);
+void	reverse_rotate(t_stack *first, t_stack *second, bool silent_mode);
 
 #endif

@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "hd_get_next_line.h"
+
 #include "ft_stdlib.h"
 #include "ft_string.h"
-#include "hd_get_next_line.h"
 
 #include <stddef.h>
 #include <unistd.h>
@@ -50,5 +51,7 @@ int				get_next_line(const int fd, char **line)
 			break ;
 	}
 	*line = (*buffers[fd] != '\0' ? process_buffer(&buffers[fd], endl) : NULL);
+	if (*line == NULL)
+		ft_strdel(&buffers[fd]);
 	return (*line == NULL ? (int)ret : 1);
 }

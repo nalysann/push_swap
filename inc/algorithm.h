@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   algorithm.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 11:19:36 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 11:19:38 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/26 11:14:38 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/26 11:14:41 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#ifndef ALGORITHM_H
+# define ALGORITHM_H
 
-# include <stdbool.h>
+# include "operations.h"
+# include "stack.h"
 
-bool	is_valid_input(int argc, char *argv[]);
+typedef struct	s_moves
+{
+	int			elem;
+	int			a_moves;
+	t_op_code	a_op;
+	int			b_moves;
+	t_op_code	b_op;
+	int			common_moves;
+	t_op_code	common_op;
+
+}				t_moves;
+
+void			find_rot_type(size_t size, size_t pos, char stack, t_moves *moves);
 
 #endif

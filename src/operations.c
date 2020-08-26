@@ -12,44 +12,79 @@
 
 #include "stack.h"
 
+#include <stdbool.h>
 #include <stddef.h>
 
-void	swap(t_stack *a, t_stack *b)
+void	swap(t_stack *first, t_stack *second, bool silent_mode)
 {
 	int		tmp;
 
-	if (a != NULL && a->size > 1)
+	if (first != NULL && first->size > 1)
 	{
-		tmp = a->front->value;
-		a->front->value = a->front->next->value;
-		a->front->next->value = tmp;
+		tmp = first->front->value;
+		first->front->value = first->front->next->value;
+		first->front->next->value = tmp;
 	}
-	if (b != NULL && b->size > 1)
+	if (second != NULL && second->size > 1)
 	{
-		tmp = b->front->value;
-		b->front->value = b->front->next->value;
-		b->front->next->value = tmp;
+		tmp = second->front->value;
+		second->front->value = second->front->next->value;
+		second->front->next->value = tmp;
+	}
+	if (!silent_mode)
+	{
+		if (first != NULL && second != NULL)
+			ft_printf("ss\n");
+		else if (first != NULL)
+			ft_printf("sa\n");
+		else
+			ft_printf("sb\n");
 	}
 }
 
-void	push(t_stack *a, t_stack *b)
+void	push(t_stack *first, t_stack *second, boot silent_mode, char to)
 {
-	if (b->size > 0)
-		push_front(a, pop_front(b));
+	if (second->size > 0)
+		push_front(first, pop_front(second));
+	if (!silent_mode)
+	{
+		if (to == 'a')
+			ft_printf("pa\n");
+		else
+			ft_printf("pb\n");
+	}
 }
 
-void	rotate(t_stack *a, t_stack *b)
+void	rotate(t_stack *first, t_stack *second, bool silent_mode)
 {
-	if (a != NULL && a->size > 1)
-		push_back(a, pop_front(a));
-	if (b != NULL && b->size > 1)
-		push_back(b, pop_front(b));
+	if (first != NULL && first->size > 1)
+		push_back(first, pop_front(first));
+	if (second != NULL && second->size > 1)
+		push_back(second, pop_front(second));
+	if (!silent_mode)
+	{
+		if (first != NULL && second != NULL)
+			ft_printf("rr\n");
+		else if (first != NULL)
+			ft_printf("ra\n");
+		else
+			ft_printf("rb\n");
+	}
 }
 
-void	reverse_rotate(t_stack *a, t_stack *b)
+void	reverse_rotate(t_stack *first, t_stack *second, bool silent_mode)
 {
-	if (a != NULL && a->size > 1)
-		push_front(a, pop_back(a));
-	if (b != NULL && b->size > 1)
-		push_front(b, pop_back(b));
+	if (first != NULL && first->size > 1)
+		push_front(first, pop_back(first));
+	if (second != NULL && second->size > 1)
+		push_front(second, pop_back(second));
+	if (!silent_mode)
+	{
+		if (first != NULL && second != NULL)
+			ft_printf("rrr\n");
+		else if (first != NULL)
+			ft_printf("rra\n");
+		else
+			ft_printf("rrb\n");
+	}
 }

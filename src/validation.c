@@ -16,11 +16,11 @@
 #include <limits.h>
 #include <stdbool.h>
 
-static bool		is_unique(int idx, char *argv[], bool verbose)
+static bool		is_unique(int idx, char *argv[])
 {
 	int		i;
 
-	i = (verbose ? 2 : 1);
+	i = 1;
 	while (i < idx)
 	{
 		if (ft_atoll(argv[i]) == ft_atoll(argv[idx]))
@@ -30,15 +30,13 @@ static bool		is_unique(int idx, char *argv[], bool verbose)
 	return (true);
 }
 
-bool			is_valid_input(int argc, char *argv[], bool verbose)
+bool			is_valid_input(int argc, char *argv[])
 {
 	int			i;
 	long long	number;
 	char		*endptr;
 
 	i = 1;
-	if (verbose && ft_strequ(argv[1], "-v"))
-		++i;
 	while (i < argc)
 	{
 		number = ft_strtoll(argv[i], &endptr, 10);

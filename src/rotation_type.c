@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   rotation_type.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 11:19:36 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 11:19:38 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/26 18:47:03 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/26 18:47:06 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#include "algorithm.h"
 
-# include <stdbool.h>
-
-bool	is_valid_input(int argc, char *argv[]);
-
-#endif
+void	find_rot_type(size_t size, size_t pos, char stack, t_moves *moves)
+{	
+	if (pos > len / 2)
+	{
+		stack == 'a' ? (moves->a_op = OP_RRA) : (moves->b_op = OP_RRB);
+		if (len > 2)
+			pos = len - pos;
+	}
+	else
+		stack == 'a' ? (moves->a_op = OP_RA) : (moves->b_op = OP_RB);
+	stack == 'a' ? (moves->a_moves = pos) : (moves->b_moves = pos);
+}

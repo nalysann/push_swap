@@ -22,9 +22,10 @@ SRC_CHECKER = checker.c \
               stack_utils.c \
               validation.c
 
-SRC_PUSH_SWAP = push_swap.c \
-                operations.c \
+SRC_PUSH_SWAP = operations.c \
+                push_swap.c \
                 stack_operations.c \
+                stack_utils.c \
                 validation.c
 
 INC_DIR = inc \
@@ -74,6 +75,7 @@ $(LIB_DIR)/$(LIB):
 $(CHECKER): $(LIB_DIR)/$(LIB) $(OBJ_CHECKER)
 	@$(CC) $(LDFLAGS) $(OBJ_CHECKER) -o $@
 	@echo -e $(BACK)$(GREEN)$@ created$(WHITE)
+	@echo
 
 $(PUSH_SWAP): $(LIB_DIR)/$(LIB) $(OBJ_PUSH_SWAP)
 	@$(CC) $(LDFLAGS) $(OBJ_PUSH_SWAP) -o $@

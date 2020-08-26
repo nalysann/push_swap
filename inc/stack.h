@@ -35,7 +35,8 @@ void			push_front(t_stack *stack, t_node *node);
 t_node			*pop_back(t_stack *stack);
 t_node			*pop_front(t_stack *stack);
 
-void			print_stacks(t_stack *a, t_stack *b);
+void			initialize_stack(t_stack *stack, int beg, int end, char **argv);
 bool			is_sorted(t_stack *stack);
+int				get_value(t_stack *stack, size_t pos);
 
 #endif

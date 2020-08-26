@@ -10,39 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
 #include "stack.h"
+#include "utils.h"
+
+#include "ft_error.h"
+#include "ft_stdio.h"
+#include "ft_stdlib.h"
+#include "ft_string.h"
 
 #include <stdbool.h>
 #include <stddef.h>
 
-void	print_stacks(t_stack *a, t_stack *b)
+void	initialize_stack(t_stack *stack, int beg, int end, char **argv)
 {
-	t_node	*a_node;
-	t_node	*b_node;
-	size_t	size;
+	int		i;
+	t_node	*node;
 
-	a_node = a->front;
-	b_node = b->front;
-	size = (a->size > b->size ? a->size : b->size);
-	while (size-- > 0)
-		if (a->size > size && b->size > size)
-		{
-			ft_printf("|%11d|    |%11d|\n", a_node->value, b_node->value);
-			a_node = a_node->next;
-			b_node = b_node->next;
-		}
-		else if (a->size > size)
-		{
-			ft_printf("|%11d|    |%11s|\n", a_node->value, "");
-			a_node = a_node->next;
-		}
-		else if (b->size > size)
-		{
-			ft_printf("|%11s|    |%11d|\n", "", b_node->value);
-			b_node = b_node->next;
-		}
-	ft_printf("--->  a  <---****--->  b  <---\n");
+	ft_bzero(stack, sizeof(*stack));
+	i = beg;
+	while (i < end)
+	{
+		if (!(node = ft_memalloc(sizeof(*node))))
+			ft_throw(MEMORY_MSG, E_MEMORY);
+		node->value = ft_atoi(argv[i]);
+		push_back(stack, node);
+		++i;
+	}
 }
 
 bool	is_sorted(t_stack *stack)
@@ -57,4 +50,16 @@ bool	is_sorted(t_stack *stack)
 		node = node->next;
 	}
 	return (true);
+}
+
+int		get_value(t_stack *stack, size_t pos)
+{
+	t_node	*node;
+	size_t	i;
+
+	node = stack->front;
+	i = 0;
+	while (i < pos)
+		node = node->next;
+	return (node->value);
 }
