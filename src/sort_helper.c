@@ -10,112 +10,119 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "operations.h"
+#include "stack.h"
 
-int 	find_min_index(int *stack, int len)
+#include <limits.h>
+#include <stddef.h>
+
+size_t	find_min_index(t_stack *stack)
 {
-	register int i;
-	register int tmp;
-	register int index;
+	int		min;
+	size_t	min_idx;
+	size_t	i;
+	t_node	*node;
 
-	if (len == 0)
+	if (stack->size == 0)
 		return (-1);
-	i = 0;
-	index = 0;
-	tmp = stack[i];
-	while (i < len)
+	min = stack->front->value;
+	min_idx = 0;
+	i = 1;
+	node = stack->front->next;
+	while (node != NULL)
 	{
-		if (tmp > stack[i])
+		if (node->value < min)
 		{
-			tmp = stack[i];
-			index = i;
+			min = node->value;
+			min_idx = i;
 		}
-		i++;
+		++i;
+		node = node->next;
 	}
-	return (index);
+	return (min_idx);
 }
 
-int 	find_max_index(int *stack, int len)
+size_t	find_max_index(t_stack *stack)
 {
-	register int i;
-	register int tmp;
-	register int index;
+	int		max;
+	size_t	max_idx;
+	size_t	i;
+	t_node	*node;
 
-	if (len == 0)
+	if (stack->size == 0)
 		return (-1);
-	i = 0;
-	index = 0;
-	tmp = stack[i];
-	while (i < len)
+	max = stack->front->value;
+	max_idx = 0;
+	i = 1;
+	node = stack->front->next;
+	while (node != NULL)
 	{
-		if (tmp < stack[i])
+		if (node->value > max)
 		{
-			tmp = stack[i];
-			index = i;
+			max = node->value;
+			max_idx = i;
 		}
-		i++;
+		++i;
+		node = node->next;
 	}
-	return (index);
+	return (max_idx);
 }
 
-int 	find_min_elem(int *stack, int stack_len)
+int		find_min_elem(t_stack *stack)
 {
-	register int i;
-	register int tmp;
-	register int index;
+	int		min;
+	t_node	*node;
 
-	if (stack_len == 0)
-		return (-1);
-	i = 0;
-	index = 0;
-	tmp = stack[i];
-	while (i < stack_len) 
+	if (stack->size == 0)
+		return (INT_MIN);
+	min = stack->front->value;
+	node = stack->front->next;
+	while (node != NULL)
 	{
-		if (tmp > stack[i])
-		{
-			tmp = stack[i];
-			index = i;
-		}
-		i++;
+		if (node->value < min)
+			min = node->value;
+		node = node->next;
 	}
-	return (index);
+	return (min);
 }
 
-int 	find_max_elem(int *stack, int stack_len)
+int		find_max_elem(t_stack *stack)
 {
-	int i;
-	int tmp;
-	int index;
+	int		max;
+	t_node	*node;
 
-	if (stack_len == 0)
-		return (-1);
-	i = 0;
-	index = 0;
-	tmp = stack[i];
-	while (i < stack_len) 
+	if (stack->size == 0)
+		return (INT_MAX);
+	max = stack->front->value;
+	node = stack->front->next;
+	while (node != NULL)
 	{
-		if (tmp < stack[i])
-		{
-			tmp = stack[i];
-			index = i;
-		}
-		i++;
+		if (node->value > max)
+			max = node->value;
+		node = node->next;
 	}
-	return (index);
+	return (max);
 }
 
-void	place_smallest_first_a(t_stack *stack)
+void	place_smallest_first_a(t_stack *a)
 {
-	register int min_index;
+	size_t	min_index;
 
-	min_index = find_min_index(stack->stack_a, stack->a_size);
-	if (min_index <= stack->a_size / 2)
-		while (min_index--)
-			apply_ra(stack);
-	else
-		while ((stack->a_size - min_index) > 0)
+	min_index = find_min_index(a);
+	if (min_index <= a->size / 2)
+	{
+		while (min_index > 0)
 		{
-			apply_rra(stack);
-			min_index++;
+			rotate(a, NULL, false);
+			--min_index;
 		}
+	}
+	else if (min_index < a->size)
+	{
+		while (min_index < a->size)
+		{
+			reverse_rotate(a, NULL, false);
+			++min_index;
+		}
+	}
 }

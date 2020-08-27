@@ -60,6 +60,9 @@ int		get_value(t_stack *stack, size_t pos)
 	node = stack->front;
 	i = 0;
 	while (i < pos)
+	{
+		++i;
 		node = node->next;
+	}
 	return (node->value);
 }

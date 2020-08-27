@@ -42,7 +42,7 @@ bool			is_valid_input(int argc, char *argv[])
 		number = ft_strtoll(argv[i], &endptr, 10);
 		if (*endptr != '\0' ||
 			!(INT_MIN <= number && number <= INT_MAX) ||
-			!is_unique(i, argv, verbose))
+			!is_unique(i, argv))
 			return (false);
 		++i;
 	}

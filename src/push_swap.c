@@ -17,7 +17,7 @@
 
 #include "ft_error.h"
 
-static void		sort_3(t_stack *a, t_stack *b)
+static void		sort_3(t_stack *a)
 {
 	int		max_idx;
 
@@ -31,7 +31,7 @@ static void		sort_3(t_stack *a, t_stack *b)
 	}
 	else
 	{
-		max_idx = find_max_elem(a);
+		max_idx = find_max_index(a);
 		if (max_idx == 0)
 			rotate(a, NULL, false);
 		if (max_idx == 1)
@@ -45,17 +45,16 @@ int				main(int argc, char *argv[])
 {
 	t_stack		a;
 	t_stack		b;
-
 	if (argc == 1)
 		ft_throw(NULL_MSG, E_NONE);
-	if (!is_valid_input(argc, argv, false))
+	if (!is_valid_input(argc, argv))
 		ft_throw(ERROR_MSG, E_VALUE);
 	initialize_stack(&a, 1, argc, argv);
 	initialize_stack(&b, 0, 0, argv);
 	if (is_sorted(&a))
-		return ;
-	if (a->size <= 3)
-		return (sort_3(a, b));
+		ft_throw(NULL_MSG, E_NONE);
+	if (a.size <= 3)
+		sort_3(&a);
 	else
 		global_sort(&a, &b);
 }

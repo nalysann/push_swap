@@ -163,8 +163,7 @@ BACK = "\033[A\033[M"
 
 .PHONY: all clean fclean re
 
-all:
-	@$(MAKE) $(LIB)
+all: $(LIB)
 
 $(LIB): $(OBJ)
 	@ar -cr $@ $?

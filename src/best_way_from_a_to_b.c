@@ -10,9 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "algorithm.h"
+#include "operations.h"
 #include "stack.h"
 
 #include "ft_math.h"
+#include "ft_string.h"
 
 #include <stddef.h>
 
@@ -42,13 +45,13 @@ static void		find_place_in_b(t_stack *b, t_moves *moves)
 		place = 0;
 	else if (b->size == 2 && moves->elem < b->front->value && moves->elem > b->back->value)
 		place = 1;
-	else if (moves->elem > get_value(b, find_max_elem(b, b->size)) ||
-			moves->elem < get_value(b, find_min_elem(b, b->size)))
-		place = find_max_elem(b, b->size);
+	else if (moves->elem > find_max_elem(b) ||
+			moves->elem < find_min_elem(b))
+		place = find_max_index(b);
 	else
 		while (i < b->size)
 		{
-			if (moves->elem < get_value(b, i) && (i + 1 < b->size && moves->elem > get_value(b, i + 1) ||
+			if (moves->elem < get_value(b, i) && ((i + 1 < b->size && moves->elem > get_value(b, i + 1)) ||
 			(i + 1 == b->size && moves->elem > b->front->value)))
 			{
 				place = i + 1;
@@ -56,7 +59,7 @@ static void		find_place_in_b(t_stack *b, t_moves *moves)
 			}
 			++i;
 		}
-	find_rot_type(len, place, 'b', moves);
+	find_rot_type(b->size, place, 'b', moves);
 }
 
 static void		calc_moves_from_a_to_b(t_stack *a, t_stack *b, size_t pos, t_moves *moves)
@@ -65,11 +68,10 @@ static void		calc_moves_from_a_to_b(t_stack *a, t_stack *b, size_t pos, t_moves 
 	find_rot_type(a->size, pos, 'a', moves);
 	find_place_in_b(b, moves);
 	find_common(moves);
-	moves->total = moves->a_moves + moves->b_moves + moves->common_moves + 1;
-	return (moves);
+	moves->total_moves = moves->a_moves + moves->b_moves + moves->common_moves + 1;
 }
 
-void			best_way_from_a_to_b(t_stack *a, t_stack *b, t_moves *best_move)
+void			best_way_from_a_to_b(t_stack *a, t_stack *b, t_moves *best_moves)
 {
 	t_moves		moves;
 	size_t		i;
@@ -79,16 +81,8 @@ void			best_way_from_a_to_b(t_stack *a, t_stack *b, t_moves *best_move)
 	while (i < a->size)
 	{
 		calc_moves_from_a_to_b(a, b, i, &moves);
-		if (i == 0)
-			best_move = moves;
-		else if (best_move->total > moves->total)
-		{
-			free_moves(best_move);
-			best_move = moves;
-		}
-		else
-			free_moves(moves);
+		if (i == 0 || best_moves->total_moves > moves.total_moves)
+			*best_moves = moves;
 		++i;
 	}
-	return (best_move);
 }

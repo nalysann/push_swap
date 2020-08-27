@@ -33,9 +33,9 @@ static void		handle_operation(char *line, t_stack *a, t_stack *b)
 	else if (ft_strequ(line, "ss"))
 		swap(a, b, true);
 	else if (ft_strequ(line, "pa"))
-		push(a, b, true);
+		push(a, b, true, 'a');
 	else if (ft_strequ(line, "pb"))
-		push(b, a, true);
+		push(b, a, true, 'b');
 	else if (ft_strequ(line, "ra"))
 		rotate(a, NULL, true);
 	else if (ft_strequ(line, "rb"))
@@ -56,6 +56,7 @@ int				main(int argc, char **argv)
 {
 	t_stack		a;
 	t_stack		b;
+	char		*line;
 
 	if (argc == 1)
 		ft_throw(NULL_MSG, E_NONE);
@@ -65,7 +66,7 @@ int				main(int argc, char **argv)
 	initialize_stack(&b, 0, 0, argv);
 	while (get_next_line(STDIN_FILENO, &line) > 0)
 	{
-		handle_operation(line, a, b);
+		handle_operation(line, &a, &b);
 		free(line);
 	}
 	if (is_sorted(&a) && b.size == 0)

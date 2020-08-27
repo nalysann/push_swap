@@ -12,6 +12,8 @@
 
 #include "stack.h"
 
+#include "ft_stdio.h"
+
 #include <stdbool.h>
 #include <stddef.h>
 
@@ -42,7 +44,7 @@ void	swap(t_stack *first, t_stack *second, bool silent_mode)
 	}
 }
 
-void	push(t_stack *first, t_stack *second, boot silent_mode, char to)
+void	push(t_stack *first, t_stack *second, bool silent_mode, char to)
 {
 	if (second->size > 0)
 		push_front(first, pop_front(second));

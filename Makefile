@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+         #
+#    By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/08/24 18:47:10 by nalysann          #+#    #+#              #
-#    Updated: 2020/08/24 18:47:12 by nalysann         ###   ########.fr        #
+#    Created: 2020/08/27 11:46:04 by nalysann          #+#    #+#              #
+#    Updated: 2020/08/27 11:46:06 by nalysann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,12 @@ SRC_CHECKER = checker.c \
               stack_utils.c \
               validation.c
 
-SRC_PUSH_SWAP = operations.c \
+SRC_PUSH_SWAP = best_way_from_a_to_b.c \
+                global_sort.c \
+                operations.c \
                 push_swap.c \
+                rotation_type.c \
+                sort_helper.c \
                 stack_operations.c \
                 stack_utils.c \
                 validation.c
@@ -65,12 +69,9 @@ BACK = "\033[A\033[M"
 .PHONY: all clean fclean re
 
 all:
-	@$(MAKE) $(LIB_DIR)/$(LIB)
+	@$(MAKE) -sC $(LIB_DIR)
 	@$(MAKE) $(CHECKER)
 	@$(MAKE) $(PUSH_SWAP)
-
-$(LIB_DIR)/$(LIB):
-	@make -sC $(LIB_DIR)
 
 $(CHECKER): $(LIB_DIR)/$(LIB) $(OBJ_CHECKER)
 	@$(CC) $(LDFLAGS) $(OBJ_CHECKER) -o $@
@@ -93,12 +94,12 @@ include $(wildcard $(DEP_CHECKER))
 include $(wildcard $(DEP_PUSH_SWAP))
 
 clean:
-	@make clean -sC $(LIB_DIR)
+	@$(MAKE) clean -sC $(LIB_DIR)
 	@rm -rf $(OBJ_DIR)
 	@echo -e $(RED)object and dependency files deleted$(WHITE)
 
 fclean: clean
-	@make fclean -sC $(LIB_DIR)
+	@$(MAKE) fclean -sC $(LIB_DIR)
 	@rm -f $(CHECKER) $(PUSH_SWAP)
 	@echo -e $(RED)$(CHECKER) and $(PUSH_SWAP) deleted$(WHITE)
 
