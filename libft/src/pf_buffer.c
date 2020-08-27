@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pf_buffer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:37:58 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:38:00 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:53:08 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:53:10 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
 #include "pf_buffer.h"
+
+#include "ft_string.h"
 
 #include <stdbool.h>
 #include <stddef.h>

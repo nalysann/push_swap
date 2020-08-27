@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pf_bigint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:36:40 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:36:59 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:53:00 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:53:01 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
 #include "pf_bigint.h"
+
+#include "ft_string.h"
 
 unsigned long long	g_powers_of_five[] =
 {

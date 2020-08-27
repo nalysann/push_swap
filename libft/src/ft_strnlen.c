@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:26:33 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:26:35 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:50:50 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:50:51 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-static int	count_with_longwords(const char *s, const char *char_ptr,
+static size_t	count_with_longwords(const char *s, const char *char_ptr,
 								const char *end_ptr)
 {
 	const unsigned long		*long_ptr;
@@ -40,7 +40,7 @@ static int	count_with_longwords(const char *s, const char *char_ptr,
 	return (char_ptr - s);
 }
 
-size_t		ft_strnlen(const char *s, size_t maxlen)
+size_t			ft_strnlen(const char *s, size_t maxlen)
 {
 	const char	*char_ptr;
 	const char	*end_ptr;

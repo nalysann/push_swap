@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pf_handle_bigfloat.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:39:40 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:39:42 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:53:30 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:53:31 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
 #include "pf_bigint.h"
 #include "pf_handle_bigfloat.h"
-#include "pf_handle_float.h"
 #include "pf_handle_placeholder.h"
 #include "pf_utils.h"
+
+#include "ft_string.h"
 
 static void		print_block(t_bigint *bi, t_string *fractional,
 								int *precision, int i)

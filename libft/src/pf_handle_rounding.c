@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pf_handle_rounding.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:47:58 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:47:59 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:56:23 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:56:24 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
 #include "pf_bigint.h"
 #include "pf_handle_bigfloat.h"
 #include "pf_handle_placeholder.h"
 #include "pf_utils.h"
 
-#include <stddef.h>
+#include "ft_string.h"
 
 static void		digit_plus_plus(t_string *string, unsigned len, int *more)
 {
@@ -88,5 +87,5 @@ int				count_leading_zeros(t_bigfloat *bf)
 	len =
 		get_length_unsigned(bf->fractional.blocks[bf->fractional.size - 1], 10);
 	return (63 - bf->exponent -
-			BIGINT_BLOCK_SIZE * (bf->fractional.size - 1) - len);
+			BIGINT_BLOCK_SIZE * (int)(bf->fractional.size - 1) - len);
 }

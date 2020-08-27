@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pf_handle_placeholder.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:44:01 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:44:03 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:55:55 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:55:57 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
 #include "pf_buffer.h"
 #include "pf_handle_asterisk.h"
 #include "pf_handle_placeholder.h"
 #include "pf_print_placeholder.h"
 #include "pf_read_fields.h"
+
+#include "ft_string.h"
 
 #include <stdarg.h>
 

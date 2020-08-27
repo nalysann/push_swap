@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_digittoint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 17:47:06 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 17:47:10 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:34:28 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:34:29 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 int		ft_digittoint(int c)
 {
 	if (ft_isxdigit(c))
-	{
 		return (ft_isdigit(c) ? c - '0' : c - 'a');
-	}
 	else
-	{
 		return (0);
-	}
 }

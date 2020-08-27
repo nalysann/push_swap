@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pf_handle_float.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:41:02 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:41:04 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:54:16 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:54:17 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdlib.h"
-#include "ft_string.h"
 #include "pf_handle_bigfloat.h"
 #include "pf_handle_float.h"
 #include "pf_handle_length.h"
 #include "pf_handle_placeholder.h"
+
+#include "ft_stdlib.h"
+#include "ft_string.h"
 
 #include <stdarg.h>
 #include <stdbool.h>

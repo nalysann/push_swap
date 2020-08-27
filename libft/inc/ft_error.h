@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 09:29:11 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 09:29:12 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:30:11 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:30:13 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifndef RED
-#  define RED	"\033[1;31m"
+#  define RED		"\033[1;31m"
 # endif
 
 void	ft_throw(const char *error_message, int error_code);

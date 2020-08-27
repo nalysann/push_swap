@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   pf_print_placeholder.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:47:00 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:47:02 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:57:17 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:57:18 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
 #include "pf_buffer.h"
 #include "pf_handle_placeholder.h"
 #include "pf_type_handlers.h"
 
+#include "ft_string.h"
+
 #include <stdarg.h>
 #include <stdbool.h>
-#include <stddef.h>
 #include <stdlib.h>
 
 static const t_type_handler		g_type_handlers[TYPES_SIZE + 1] =

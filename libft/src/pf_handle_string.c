@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pf_handle_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:45:20 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:45:21 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:56:42 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:56:43 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
 #include "pf_handle_placeholder.h"
+
+#include "ft_string.h"
 
 #include <stdarg.h>
 

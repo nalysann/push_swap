@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pf_handle_hex_upper.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 18:41:50 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 18:41:52 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:54:52 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:54:52 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdlib.h"
-#include "ft_string.h"
 #include "pf_handle_length.h"
 #include "pf_handle_placeholder.h"
 #include "pf_utils.h"
+
+#include "ft_stdlib.h"
+#include "ft_string.h"
 
 #include <stdarg.h>
 #include <stddef.h>
