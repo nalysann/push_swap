@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 11:46:15 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 11:46:17 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/28 19:42:22 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/28 19:42:23 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ typedef struct	s_ops
 
 void			get_best_ops(t_deque *a, t_deque *b, t_ops *best);
 
-int				find_place_in_a(t_deque *deque, size_t len, int elem, t_op_code *op);
 void			move_back(t_deque *a, t_deque *b);
 void			move_after_margin(t_deque *a, t_deque *b);
-void			process_ops(t_deque *a, t_deque *b, t_ops *ops);
 
-int				get_a_rot_type(int len, int pos, t_op_code *op);
-int				get_b_rot_type(int len, int pos, t_op_code *op);
+size_t			get_op(size_t len, size_t pos, t_op_code *op, char name);
+size_t			get_insert_position(t_deque *deque, int value, t_op_code *op,
+										char name);
+void			handle_ops(t_deque *a, t_deque *b, t_ops *ops);
 
 #endif

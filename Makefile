@@ -29,7 +29,7 @@ SRC_PUSH_SWAP = deque_minmax.c \
                 move.c \
                 operations.c \
                 push_swap.c \
-                rotation_type.c \
+                sort_utils.c \
                 validation.c
 
 INC_DIR = inc \
@@ -60,47 +60,53 @@ LDFLAGS = -L $(LIB_DIR) -lft
 
 SHELL = /bin/zsh
 
-WHITE = "\033[0;0m"
+RESET = "\033[0;0m"
 RED = "\033[1;31m"
 GREEN = "\033[1;32m"
 YELLOW = "\033[1;33m"
-BACK = "\033[A\033[M"
+BLUE = "\033[1;34m"
+MAGENTA = "\033[1;35m"
+CYAN = "\033[1;36m"
+GREY = "\033[1;37m"
 
 .PHONY: all clean fclean re
 
-all:
-	@$(MAKE) -sC $(LIB_DIR)
-	@$(MAKE) $(CHECKER)
-	@$(MAKE) $(PUSH_SWAP)
+all: $(LIB_DIR)/$(LIB) $(CHECKER) $(PUSH_SWAP)
+
+$(LIB_DIR)/$(LIB):
+	@$(MAKE) -C $(LIB_DIR)
 
 $(CHECKER): $(LIB_DIR)/$(LIB) $(OBJ_CHECKER)
-	@$(CC) $(LDFLAGS) $(OBJ_CHECKER) -o $@
-	@echo -e $(BACK)$(GREEN)$@ created$(WHITE)
-	@echo
+	@echo -en $(GREEN)
+	$(CC) $(LDFLAGS) $(OBJ_CHECKER) -o $@
+	@echo -en $(RESET)
 
 $(PUSH_SWAP): $(LIB_DIR)/$(LIB) $(OBJ_PUSH_SWAP)
-	@$(CC) $(LDFLAGS) $(OBJ_PUSH_SWAP) -o $@
-	@echo -e $(BACK)$(GREEN)$@ created$(WHITE)
+	@echo -en $(GREEN)
+	$(CC) $(LDFLAGS) $(OBJ_PUSH_SWAP) -o $@
+	@echo -en $(RESET)
 
 $(OBJ_DIR):
 	@mkdir -p $@
-	@echo
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo -e $(YELLOW)compiling: $(@:$(OBJ_DIR)/%=%)$(BACK)$(WHITE)
+	@echo -en $(GREY)
+	$(CC) $(CFLAGS) -c $< -o $@
+	@echo -en $(RESET)
 
 include $(wildcard $(DEP_CHECKER))
 include $(wildcard $(DEP_PUSH_SWAP))
 
 clean:
-	@$(MAKE) clean -sC $(LIB_DIR)
-	@rm -rf $(OBJ_DIR)
-	@echo -e $(RED)object and dependency files deleted$(WHITE)
+	@$(MAKE) clean -C $(LIB_DIR)
+	@echo -en $(RED)
+	rm -rf $(OBJ_DIR)
+	@echo -en $(RESET)
 
 fclean: clean
-	@$(MAKE) fclean -sC $(LIB_DIR)
-	@rm -f $(CHECKER) $(PUSH_SWAP)
-	@echo -e $(RED)$(CHECKER) and $(PUSH_SWAP) deleted$(WHITE)
+	@$(MAKE) fclean -C $(LIB_DIR)
+	@echo -en $(RED)
+	rm -f $(CHECKER) $(PUSH_SWAP)
+	@echo -en $(RESET)
 
 re: fclean all

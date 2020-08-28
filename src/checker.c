@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 13:19:14 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/28 13:19:15 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/28 19:41:12 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/28 19:41:13 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int				main(int argc, char *argv[])
 	t_deque		b;
 	char		*line;
 
-	if (argc < 1)
+	if (argc == 1)
 		ft_throw(NULL_MSG, E_NONE);
 	if (!is_valid_input(argc, argv))
 		ft_throw(ERROR_MSG, E_VALUE);

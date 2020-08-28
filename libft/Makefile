@@ -155,37 +155,43 @@ CFLAGS = -Wall -Wextra -Werror \
 
 SHELL = /bin/zsh
 
-WHITE = "\033[0;0m"
+RESET = "\033[0;0m"
 RED = "\033[1;31m"
 GREEN = "\033[1;32m"
 YELLOW = "\033[1;33m"
-BACK = "\033[A\033[M"
+BLUE = "\033[1;34m"
+MAGENTA = "\033[1;35m"
+CYAN = "\033[1;36m"
+GREY = "\033[1;37m"
 
 .PHONY: all clean fclean re
 
 all: $(LIB)
 
 $(LIB): $(OBJ)
-	@ar -cr $@ $?
-	@ranlib $@
-	@echo -e $(BACK)$(GREEN)$@ created$(WHITE)
+	@echo -en $(BLUE)
+	ar -cr $@ $?
+	ranlib $@
+	@echo -en $(RESET)
 
 $(OBJ_DIR):
 	@mkdir -p $@
-	@echo
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo -e $(YELLOW)compiling: $(@:$(OBJ_DIR)/%=%)$(BACK)$(WHITE)
+	@echo -en $(GREY)
+	$(CC) $(CFLAGS) -c $< -o $@
+	@echo -en $(RESET)
 
 include $(wildcard $(DEP))
 
 clean:
+#	@echo -en $(RED)
 	@rm -rf $(OBJ_DIR)
-#	@echo -e $(RED)object and dependency files deleted$(WHITE)
+#	@echo -en $(RESET)
 
 fclean: clean
-	@rm -f $(LIB)
-	@echo -e $(RED)$(LIB) deleted$(WHITE)
+	@echo -en $(RED)
+	rm -f $(LIB)
+	@echo -en $(RESET)
 
 re: fclean all
