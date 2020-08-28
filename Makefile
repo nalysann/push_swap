@@ -17,19 +17,19 @@ PUSH_SWAP = push_swap
 SRC_DIR = src
 
 SRC_CHECKER = checker.c \
+              deque_operations.c \
+              deque_utils.c \
               operations.c \
-              stack_operations.c \
-              stack_utils.c \
               validation.c
 
-SRC_PUSH_SWAP = best_way_from_a_to_b.c \
-                global_sort.c \
+SRC_PUSH_SWAP = deque_minmax.c \
+                deque_operations.c \
+                deque_utils.c \
+                get_best_ops.c \
+                move.c \
                 operations.c \
                 push_swap.c \
                 rotation_type.c \
-                sort_helper.c \
-                stack_operations.c \
-                stack_utils.c \
                 validation.c
 
 INC_DIR = inc \

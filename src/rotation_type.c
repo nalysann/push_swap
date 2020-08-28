@@ -10,19 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "algorithm.h"
+#include "operations.h"
 
-void	find_rot_type(size_t size, size_t pos, char stack, t_moves *moves)
-{	
-	if (pos > size / 2)
+int		get_a_rot_type(int len, int pos, t_op_code *op)
+{
+	if (pos > len / 2)
 	{
-		stack == 'a' ? (moves->a_op = OP_RRA) : (moves->b_op = OP_RRB);
-		if (size > 2)
-			pos = size - pos;
+		*op = OP_RRA;
+		if (len > 2)
+			pos = len - pos;
 	}
 	else
-	{
-		stack == 'a' ? (moves->a_op = OP_RA) : (moves->b_op = OP_RB);
-	}
-	stack == 'a' ? (moves->a_moves = pos) : (moves->b_moves = pos);
+		*op = OP_RA;
+	return (pos);
 }
+
+int		get_b_rot_type(int len, int pos, t_op_code *op)
+{
+	if (pos > len / 2)
+	{
+		*op = OP_RRB;
+		if (len > 2)
+			pos = len - pos;
+	}
+	else
+		*op = OP_RB;
+	return (pos);
+}
+

@@ -13,32 +13,29 @@
 #ifndef ALGORITHM_H
 # define ALGORITHM_H
 
+# include "deque.h"
 # include "operations.h"
-# include "stack.h"
 
-typedef struct	s_moves
+typedef struct	s_ops
 {
-	int			elem;
-	size_t		a_moves;
+	int			value;
 	t_op_code	a_op;
-	size_t		b_moves;
+	size_t		a_amount;
 	t_op_code	b_op;
-	size_t		common_moves;
-	t_op_code	common_op;
-	size_t		total_moves;
+	size_t		b_amount;
+	t_op_code	s_op;
+	size_t		s_amount;
+	size_t		total_amount;
+}				t_ops;
 
-}				t_moves;
+void			get_best_ops(t_deque *a, t_deque *b, t_ops *best);
 
-void			best_way_from_a_to_b(t_stack *a, t_stack *b, t_moves *best_moves);
+int				find_place_in_a(t_deque *deque, size_t len, int elem, t_op_code *op);
+void			move_back(t_deque *a, t_deque *b);
+void			move_after_margin(t_deque *a, t_deque *b);
+void			process_ops(t_deque *a, t_deque *b, t_ops *ops);
 
-void			global_sort(t_stack *a, t_stack *b);
-
-void			find_rot_type(size_t size, size_t pos, char stack, t_moves *moves);
-
-size_t			find_min_index(t_stack *stack);
-size_t			find_max_index(t_stack *stack);
-int				find_min_elem(t_stack *stack);
-int				find_max_elem(t_stack *stack);
-void			place_smallest_first_a(t_stack *a);
+int				get_a_rot_type(int len, int pos, t_op_code *op);
+int				get_b_rot_type(int len, int pos, t_op_code *op);
 
 #endif

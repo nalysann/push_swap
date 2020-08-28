@@ -1,47 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   deque_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/28 13:35:15 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/28 13:35:16 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/28 13:19:59 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/28 13:20:00 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "deque.h"
+#include "utils.h"
+
+#include "ft_error.h"
 #include "ft_stdlib.h"
 
-#include <limits.h>
 #include <stdbool.h>
+#include <stddef.h>
+#include <stdlib.h>
 
-static bool		is_unique(int pos, char *argv[])
+void	initialize_deque(t_deque *deque, int beg, int argc, char *argv[])
 {
 	int		i;
 
-	i = 1;
-	while (i < pos)
-	{
-		if (ft_atoll(argv[i]) == ft_atoll(argv[pos]))
-			return (false);
-		++i;
-	}
-	return (true);
-}
-
-bool			is_valid_input(int argc, char *argv[])
-{
-	int			i;
-	long long	number;
-	char		*endptr;
-
-	i = 1;
+	deque->values = (int *)malloc((argc - 1) * sizeof(int));
+	deque->size = 0;
+	if (deque->values == NULL)
+		ft_throw(MEMORY_MSG, E_MEMORY);
+	i = beg;
 	while (i < argc)
 	{
-		number = ft_strtoll(argv[i], &endptr, 10);
-		if (*endptr != '\0' ||
-			!(INT_MIN <= number && number <= INT_MAX) ||
-			!is_unique(i, argv))
+		push_back(deque, ft_atoi(argv[i]));
+		++i;
+	}
+}
+
+bool	is_sorted(t_deque *deque)
+{
+	size_t	i;
+
+	i = 0;
+	while (i + 1 < deque->size)
+	{
+		if (deque->values[i] > deque->values[i + 1])
 			return (false);
 		++i;
 	}

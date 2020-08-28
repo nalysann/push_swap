@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 09:14:00 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 09:14:02 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/28 13:19:14 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/28 13:19:15 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "deque.h"
 #include "operations.h"
-#include "stack.h"
 #include "utils.h"
 #include "validation.h"
 
@@ -19,12 +19,13 @@
 #include "ft_stdio.h"
 #include "ft_string.h"
 
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-static void		handle_operation(char *line, t_stack *a, t_stack *b)
+#include <stdio.h>
+
+static void		handle_operation(char *line, t_deque *a, t_deque *b)
 {
 	if (ft_strequ(line, "sa"))
 		swap(a, NULL, true);
@@ -52,18 +53,18 @@ static void		handle_operation(char *line, t_stack *a, t_stack *b)
 		ft_throw(ERROR_MSG, E_OPERATION);
 }
 
-int				main(int argc, char **argv)
+int				main(int argc, char *argv[])
 {
-	t_stack		a;
-	t_stack		b;
+	t_deque		a;
+	t_deque		b;
 	char		*line;
 
-	if (argc == 1)
+	if (argc < 1)
 		ft_throw(NULL_MSG, E_NONE);
 	if (!is_valid_input(argc, argv))
 		ft_throw(ERROR_MSG, E_VALUE);
-	initialize_stack(&a, 1, argc, argv);
-	initialize_stack(&b, 0, 0, argv);
+	initialize_deque(&a, 1, argc, argv);
+	initialize_deque(&b, argc, argc, argv);
 	while (get_next_line(STDIN_FILENO, &line) > 0)
 	{
 		handle_operation(line, &a, &b);

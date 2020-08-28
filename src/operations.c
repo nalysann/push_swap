@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 09:14:05 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/25 09:14:07 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/28 13:29:39 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/28 13:29:40 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "deque.h"
 
 #include "ft_stdio.h"
 
 #include <stdbool.h>
 #include <stddef.h>
 
-void	swap(t_stack *first, t_stack *second, bool silent_mode)
+void	swap(t_deque *first, t_deque *second, bool silent_mode)
 {
 	int		tmp;
 
 	if (first != NULL && first->size > 1)
 	{
-		tmp = first->front->value;
-		first->front->value = first->front->next->value;
-		first->front->next->value = tmp;
+		tmp = first->values[0];
+		first->values[0] = first->values[1];
+		first->values[1] = tmp;
 	}
 	if (second != NULL && second->size > 1)
 	{
-		tmp = second->front->value;
-		second->front->value = second->front->next->value;
-		second->front->next->value = tmp;
+		tmp = second->values[0];
+		second->values[0] = second->values[1];
+		second->values[1] = tmp;
 	}
 	if (!silent_mode)
 	{
@@ -44,7 +44,7 @@ void	swap(t_stack *first, t_stack *second, bool silent_mode)
 	}
 }
 
-void	push(t_stack *first, t_stack *second, bool silent_mode, char to)
+void	push(t_deque *first, t_deque *second, bool silent_mode, char to)
 {
 	if (second->size > 0)
 		push_front(first, pop_front(second));
@@ -57,7 +57,7 @@ void	push(t_stack *first, t_stack *second, bool silent_mode, char to)
 	}
 }
 
-void	rotate(t_stack *first, t_stack *second, bool silent_mode)
+void	rotate(t_deque *first, t_deque *second, bool silent_mode)
 {
 	if (first != NULL && first->size > 1)
 		push_back(first, pop_front(first));
@@ -74,7 +74,7 @@ void	rotate(t_stack *first, t_stack *second, bool silent_mode)
 	}
 }
 
-void	reverse_rotate(t_stack *first, t_stack *second, bool silent_mode)
+void	reverse_rotate(t_deque *first, t_deque *second, bool silent_mode)
 {
 	if (first != NULL && first->size > 1)
 		push_front(first, pop_back(first));
