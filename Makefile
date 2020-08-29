@@ -71,7 +71,10 @@ GREY = "\033[1;37m"
 
 .PHONY: all clean fclean re
 
-all: $(LIB_DIR)/$(LIB) $(CHECKER) $(PUSH_SWAP)
+all:
+	@$(MAKE) $(LIB_DIR)/$(LIB)
+	@$(MAKE) $(CHECKER)
+	@$(MAKE) $(PUSH_SWAP)
 
 $(LIB_DIR)/$(LIB):
 	@$(MAKE) -C $(LIB_DIR)

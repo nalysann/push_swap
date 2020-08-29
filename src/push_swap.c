@@ -19,6 +19,7 @@
 #include "ft_string.h"
 
 #include <stddef.h>
+#include <stdlib.h>
 
 static void		sort_small(t_deque *deque)
 {
@@ -80,4 +81,6 @@ int				main(int argc, char *argv[])
 		sort_small(&a);
 	else
 		sort_deque(&a, &b);
+	free(a.values);
+	free(b.values);
 }
